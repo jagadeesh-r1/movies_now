@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 # local imports
-# from app.models.db_base import Base
+from app.models.db_base import Base
 # from app.models.cities import Cities
 # from app.models.users import Users
 # from app.models.city_movie_map import CityMovieMap
