@@ -32,7 +32,6 @@ def health_check():
 def login():
 
     request_data = request.get_json()
-    print(request_data)
     if 'username' in request_data and 'password' in request_data:
         username = request_data['username']
         password = request_data['password'].encode("utf-8")
@@ -93,7 +92,6 @@ def register():
         city = request_data['city']
 
         account = session.query(Users.username,Users.email).filter(or_(Users.username.like(username),Users.email.like(email))).first()
-        print(account)
         if account:
             msg = 'Account already exists !'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):

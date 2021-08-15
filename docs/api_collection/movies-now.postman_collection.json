@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "3fbb8b9f-2ac2-4d53-80b0-79e83d09f77d",
+		"name": "movies-now",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"sasi\",\n    \"password\":\"090702\",\n    \"email\":\"gofourcrazy@gmail.com\",\n    \"phone\":8106283277,\n    \"city\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"sasi\",\n    \"password\":\"090702\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cities Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/cities",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movies List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Theaters by City ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/theaters/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"theaters",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shows by Movie ID in a Theater Screen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/shows/1/1?date=Mon, 16 Aug 2021 00:00:00 GMT",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"shows",
+						"1",
+						"1"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "Mon, 16 Aug 2021 00:00:00 GMT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Screen Info of Theaters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9004/api/movies-now/screens/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"movies-now",
+						"screens",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Ticketa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bookings for User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
