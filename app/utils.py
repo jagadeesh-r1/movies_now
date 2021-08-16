@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def catch_exceptions(func : function):
+def catch_exceptions(func):
     '''
     This decoretor wraps fuction to catch any exceptions and log them. 
     '''
