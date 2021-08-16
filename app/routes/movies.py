@@ -10,7 +10,9 @@ logger = logging.getLogger(__name__)
 
 @movies.route('/cities',methods=['GET'])
 def get_cities():
-    
+    '''
+    Endpoint gives list of cities in the DB.
+    '''
     data = MoviesNow.get_cities()
     if not data:
         data = {}
@@ -18,7 +20,9 @@ def get_cities():
 
 @movies.route('/movies',methods=['GET'])
 def get_movies():
-    
+    '''
+    Endpoint gives list of movies in the DB.
+    '''
     data = MoviesNow.get_movies()
     if not data:
         data = {}
@@ -26,7 +30,9 @@ def get_movies():
 
 @movies.route('/theaters/<city_id>',methods=['GET'])
 def get_city_theaters(city_id):
-    
+    '''
+    Gives the Theaters in a Given City.
+    '''
     data = MoviesNow.get_city_theaters(city_id)
     if not data:
         data = {}
