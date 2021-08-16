@@ -6,6 +6,11 @@ from sqlalchemy.orm import relationship
 from app.models.db_base import MySqlBase
 from sqlalchemy import Column, Integer,ForeignKey,Boolean,DateTime,Enum
 
+'''
+Currently commenting out this model due to complexity it adds to complete the assignment.
+'''
+
+
 # class ShowSeats(MySqlBase):
 
     # __tablename__ = 'show_seats'

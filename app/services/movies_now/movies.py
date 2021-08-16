@@ -9,6 +9,7 @@ from app.models.shows import Shows
 from app.models.movies import Movies
 from app.models.booking import Booking
 from app.models.movie_theaters import MovieTheaters
+from app.utils import catch_exceptions
 
 class MoviesNow():
 
@@ -17,8 +18,11 @@ class MoviesNow():
     def __init__(self) -> None:
         self.session = get_session(Config.SQLALCHEMY_DATABASE_URI)
     
-    def get_cities(self):
-
+    @catch_exceptions
+    def get_cities(self) -> dict:
+        '''
+        Queries the Cities from the DB table 'cities'
+        '''
         city_list = self.session.query(Cities.city_id,Cities.name).all()
 
         cities = []
@@ -38,7 +42,11 @@ class MoviesNow():
 
         return response
 
-    def get_movies(self):
+    @catch_exceptions
+    def get_movies(self) -> dict:
+        '''
+        Queries the Movies from the DB table 'movies'
+        '''
         movie_list = self.session.query(Movies.movie_id,Movies.movie_title,Movies.description,Movies.duration,Movies.genre,Movies.release_date).all()
 
         movies = []
@@ -63,8 +71,11 @@ class MoviesNow():
 
         return response
 
-    def get_city_theaters(self,city_id):
-
+    @catch_exceptions
+    def get_city_theaters(self,city_id : int) -> dict:
+        '''
+        Queries the theaters present in a Given city. DB table 'movie_theaters' 
+        '''
         theater_list = self.session.query(MovieTheaters.theater_id,MovieTheaters.theater_name,MovieTheaters.total_screens).filter(MovieTheaters.city_id == city_id).all()
         # print(theater_list)
         theaters = []
@@ -86,7 +97,11 @@ class MoviesNow():
 
         return response
 
-    def get_screens_info(self,theater_id):
+    @catch_exceptions
+    def get_screens_info(self,theater_id : int) -> dict:
+        '''
+        Queries the Screens in a Theater given the 'theater_id' from the DB table 'screens' 
+        '''
         screens_list = self.session.query(Screens.screen_id,Screens.screen_name,Screens.total_seats).filter(Screens.theater_id == theater_id).all()
 
         screens = []
@@ -109,8 +124,12 @@ class MoviesNow():
 
         return response
 
-    def get_shows_info(self,movie_id,screen_id,date=None):
-        print(date)
+    @catch_exceptions
+    def get_shows_info(self,movie_id : int,screen_id : int,date=None) -> dict:
+        '''
+        Queries the Shows Present for a Movie in a screen given 'movie_id' and 'screen_id'. 
+        Optional date param. If given this function returns the show on the given date. DB table 'shows'
+        '''
         if date:
             show_list = self.session.query(Shows.show_id,Shows.screen_id,Shows.start_time,Shows.end_time,Shows.date,Shows.booked_seat_counts).filter(and_(Shows.movie_id == movie_id,Shows.screen_id == screen_id)).filter(Shows.date == date).all()
         else:
@@ -138,8 +157,12 @@ class MoviesNow():
 
         return response       
 
-    def book_tickets(self,request_data):
-
+    @catch_exceptions
+    def book_tickets(self,request_data : dict) -> dict:
+        '''
+        This function book the tickets for a Show given the 'show_id' and Number of tickets 'no_of_seats'. If there are enough seats, It will book them and
+        update it in the 'booking' and 'shows' tables.
+        '''
         user_id = request_data.get("user_id")
         show_id = request_data.get("show_id")
         no_of_tickets = request_data.get("no_of_seats",1)
@@ -174,8 +197,11 @@ class MoviesNow():
             }
         return response
 
-    def get_bookings(self,user_id):
-
+    @catch_exceptions
+    def get_bookings(self,user_id : int) -> dict:
+        '''
+        Queries the Booking details of a given user by 'user_id' from 'booking' table.
+        '''
         bookings_list = self.session.query(Booking.id,Booking.show_id,Booking.timestamp,Booking.no_of_seats).filter(Booking.user_id == user_id).all()
 
         bookings = []
